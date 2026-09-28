@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fire & Smoke Detection System</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div><h1>🔥 Fire & Smoke Detection</h1><p>Computer Vision Early-Warning Dashboard</p></div>
+  <div class="status-pill" id="systemStatus">SYSTEM READY</div>
+</header>
+
+<main class="container">
+<section class="cards">
+  <div class="card"><span>Status</span><strong id="status">SAFE</strong></div>
+  <div class="card"><span>Fire Score</span><strong id="fireScore">0.00</strong></div>
+  <div class="card"><span>Smoke Score</span><strong id="smokeScore">0.00</strong></div>
+  <div class="card"><span>Detections</span><strong id="detections">0</strong></div>
+</section>
+
+<section class="panel">
+<h2>Live Camera</h2>
+<div class="camera-row">
+  <video id="video" autoplay playsinline muted></video>
+  <canvas id="canvas" hidden></canvas>
+  <img id="resultImage" alt="Processed camera frame">
+</div>
+<div class="controls">
+  <button id="startBtn">Start Camera</button>
+  <button id="stopBtn" class="secondary">Stop Camera</button>
+</div>
+<p class="hint">Camera frames are analyzed by the Flask backend.</p>
+</section>
+
+<section class="grid2">
+<div class="panel">
+<h2>Analyze Image</h2>
+<input id="imageFile" type="file" accept="image/*">
+<button id="analyzeBtn">Analyze Image</button>
+<img id="uploadedPreview" class="preview" alt="Analysis result">
+</div>
+<div class="panel">
+<h2>Analyze Video</h2>
+<input id="videoFile" type="file" accept="video/*">
+<button id="videoBtn">Process Video</button>
+<pre id="videoResult">No video processed.</pre>
+</div>
+</section>
+
+<section class="panel">
+<h2>Detection Details</h2>
+<div id="details" class="details">No active detection.</div>
+</section>
+
+<section class="panel warning">
+<strong>Safety:</strong> Educational prototype only. Do not replace certified alarms or emergency systems with this software.
+</section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
